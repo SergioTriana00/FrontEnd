@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
+.mainTittle{
+    background-color:#ffd551;
+    text-align: center;
+    align-items: center;
+    margin: 50px;
+    padding: 20px;
+}
+.content{
+    background-color:#ffd551;
+    text-align: left;
+    margin: 50px;
+    padding: 20px;
+}
+.content nav ul{
+    background-color:#48edff;
+    text-align: left;
+    align-items: center;
+    width: 200px;
+    margin: 50px;
+    padding: 20px;
+}
+.content nav ul li{
+    background-color:#48edff;
+    list-style: none;
+    text-align: center;
+    text-emphasis: none;
+}
+.content nav ul li:hover{
+    background-color:#0784ff;
+    list-style: none;
+    text-align: center;
+    text-emphasis: none;
+}
+.color1 {color: #ffd551;}
+.color2 {color: #fff374;}
+.color3 {color: #082fca;}
+.color4 {color: #0784ff;}
+.color5 {color: #48edff;}

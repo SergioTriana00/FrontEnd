@@ -1,0 +1,31 @@
+<div class="itemSection">
+
+    <div class="column">
+        <div class="container">
+            <app-decorative-item-show></app-decorative-item-show>
+        </div>
+        
+    </div>
+
+
+    <div class="selectedDisplay">
+
+        <div class="container">
+
+            <div class="infoDisplay">
+                
+                <router-outlet></router-outlet>
+                
+            </div>
+            <button [routerLink]="['/design/item/create']"> Create</button>           
+        </div>
+    </div>
+
+    <div class="listDisplay">
+
+        <div class="container">
+            <app-item-list></app-item-list>
+        </div>
+    </div>
+    
+</div>

@@ -1,0 +1,50 @@
+<div class="showSection">
+
+    <form [formGroup]="itemCreateForm">
+
+        <h3>CREATE MENU</h3>    
+        <h3><input class="tittleInput" type="text" formControlName="name"></h3>
+
+        <div class="imageContainer">
+            <div class="image">
+
+            </div>
+
+            <div class="examine">
+                Examine: <input style="border: 3px solid black;" class="content" type="text" formControlName="examine">
+            </div>
+
+        </div>
+
+
+        <ul>
+
+            <li>
+                <p class="tittle"> Last updated </p>
+                <p><input class="content" type="text" formControlName="last_updated"></p>
+            </li>
+            <li>
+                <p class="tittle">Cost</p>
+                <p><input class="content" type="number" formControlName="cost"></p>
+            </li>
+            <li>
+                <p class="tittle">Weigth</p>
+                <p><input class="content" type="number" formControlName="weight"></p>
+            </li>
+            <li>
+                <p class="tittle">wiki Url</p>
+                <p> <input class="content" type="text" formControlName="wiki_url"></p>
+            </li>
+
+
+            <div class="buttonContainer">
+                <button (click)="save()"> Save </button>
+            </div>
+            
+        </ul>
+
+
+
+    </form>
+
+</div>

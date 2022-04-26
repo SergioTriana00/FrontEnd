@@ -1,0 +1,10 @@
+<div>
+    <h3> LISTA DE MONSTRUOS<button (click)="ngOnInit()">ACTUALIZAR</button> </h3>
+
+    <ul>
+        <li *ngFor="let monster of monsters; let i = index">
+            <a [routerLink]="['/design/monster/show',monster.id]">{{monster.name}}</a>
+            <button (click)="delete(monster.id)"> BORRAR </button>
+        </li>
+    </ul>
+</div>

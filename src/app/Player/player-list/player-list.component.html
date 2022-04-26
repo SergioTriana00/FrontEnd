@@ -1,0 +1,8 @@
+<h3> PLAYER LIST <button (click)="ngOnInit()" >R</button> </h3>
+
+<ul>
+    <li *ngFor="let player of players; let i = index">
+        <a [routerLink]="['/admin/show',player.id]">{{player.name}}</a>
+        <button (click)="delete(player.id)"> X </button>
+    </li>
+</ul>

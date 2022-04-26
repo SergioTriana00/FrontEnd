@@ -1,0 +1,13 @@
+<h3>ITEM LIST <button (click)="ngOnInit()">R</button> </h3>
+
+<div>
+    <ul>
+        <li *ngFor="let item of items; let i = index">
+
+            <a [routerLink]="['/design/item/show',item.id]">{{item.name}}</a>
+            <span *ngIf="design === true"><button (click)="delete(item.id)"> X </button></span>
+            <span *ngIf="design === false"><button (click)="add(item)"> + </button></span>
+
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,61 @@
+div{
+    width: 400px;
+    position: relative;
+    left: 0;
+    top: -750px;
+}
+
+div h3{
+    text-align: center;
+}
+
+div h3 button{
+    margin-left: 20px;
+    
+    background-color:#48edff;
+}
+
+div ul{
+    
+    text-align: left;
+    position: relative;
+    
+    width: 300px;
+      
+}
+div ul li{
+    background-color:#0784ff;
+    text-align: left;
+    height: 25px;
+    width: 250px;
+    margin: 5px;
+    list-style: none;
+    text-emphasis: none;
+    margin-left: 30px;
+    
+} 
+div ul li:hover{
+    background-color:#ffd551;
+    text-align: left;
+    height: 25px;
+    
+    margin: 5px;
+    list-style: none;
+    text-emphasis: none;
+    margin-left: 30px;
+    
+} 
+div ul button{
+    background-color:#48edff;
+    height: 25px;
+    position: relative;
+    right: -25px;
+    border-bottom: #48edff;
+    
+    
+} 
+.color1 {color: #ffd551;}
+.color2 {color: #fff374;}
+.color3 {color: #082fca;}
+.color4 {color: #0784ff;}
+.color5 {color: #48edff;}

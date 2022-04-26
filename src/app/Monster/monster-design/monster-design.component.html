@@ -1,0 +1,28 @@
+<div class="monsterSection">
+
+    <div class="column">
+    </div>
+
+    <div class="selectedDisplay">
+
+        <div class="container">
+
+            <div class="infoDisplay">
+                
+                <router-outlet></router-outlet>
+
+            </div>
+            <button [routerLink]="['/design/monster/create']"> Create</button>           
+        </div>
+
+    </div>
+
+    <div class="listDisplay">
+
+        <div class="container">
+            <app-monster-list></app-monster-list>
+        </div>
+
+    </div>
+    
+</div>

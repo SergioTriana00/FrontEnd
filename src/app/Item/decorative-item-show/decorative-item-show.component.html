@@ -1,0 +1,34 @@
+<h3>DECORATIVES
+    <span class="buttonGroup">
+        <button class="reloadButton" (click)="ngOnInit()">R</button>
+        <button (click)="addName()">New</button>
+    </span>
+
+</h3>
+
+
+<form [formGroup]="decoItemsForm">
+
+    <div class="container">
+        <ul formArrayName="names">
+
+            <li *ngFor="let item of names.controls; let i = index">
+
+                <span [formGroupName]="i" >
+                    <input class="content" type="text" name="" id="" formControlName="name">
+                </span>
+                
+                <span class="buttonGroup">
+                    <button class="saveButton" (click)="save(i)"> Save </button>
+
+                    <span *ngIf="item.value.id != -1">
+                        <button class="deleteButton" (click)="delete(i)"> Delete </button>
+                    </span>
+                    
+                </span> 
+
+            </li>
+        </ul>
+    </div>
+
+</form>

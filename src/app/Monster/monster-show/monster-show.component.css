@@ -1,0 +1,9 @@
+.showSection{
+    position: relative;
+    left: 550px;
+    align-items: left;
+}
+
+.statSection ul li{
+    list-style: none;
+}

@@ -1,0 +1,80 @@
+<div class="showSection">
+    <h3>CREATE PLAYER</h3>
+
+    <form [formGroup]="playerCreateForm">
+
+        <h3><input class="tittleInput" type="text" formControlName="name"></h3>
+
+        <div class="statSection">
+            <ul>
+                <li>
+                    <p class="tittle">last updated</p>
+                    <p><input class="content" type="text" formControlName="last_updated"  ></p>
+                </li>
+                <li>
+                    <p class="tittle">Attack Level</p>
+                    <p><input class="content" type="number" formControlName="attack_level"></p>
+
+                </li>
+                <li>
+                    <p class="tittle">defence slash</p>
+                    <p><input class="content" type="number" formControlName="defence_slash" ></p>
+                </li>
+                <li>
+                    <p class="tittle">size</p>
+                    <p><input class="content" type="number" formControlName="size" ></p>
+                </li>
+                <li>
+                    <p class="tittle">hitpoints</p>
+                    <p><input class="content" type="number" formControlName="hitpoints" ></p>
+                </li>
+
+                <li>
+                    <p class="tittle">MaxWeight</p>
+                    <p><input class="content" type="number" formControlName="maxWeight" ></p>
+                </li>
+
+                <li>
+                    <p class="tittle">Weight</p>
+                    <p><input class="content" type="number" formControlName="weight" ></p>
+                </li>
+
+            </ul>
+
+            <h3 style="border-top: 4px solid black;">categories
+                <button (click)="addCategory()" style="width: 10%;" >New </button>
+            </h3>
+
+            <ul formArrayName="categories">
+                <li *ngFor="let category of categories.controls; let i = index">
+                    <p [formGroupName]="i">
+                        <input class="content" type="text" formControlName="name">
+                    </p>
+                    <button (click)="removeCategory(i)" class="buttonDelete">X</button>
+                </li>
+            </ul>
+
+            <h3 style="border-top: 4px solid black;">Backpack
+                <!-- <button (click)="addCategory()" style="width: 10%;" >New </button> -->
+            </h3>
+
+            <ul formArrayName="backpack">
+                <li *ngFor="let item of items.controls; let i = index">
+                    <p [formGroupName]="i">
+                        <span>{{item.value.item.name}} </span>
+                    </p>
+                    <button (click)="removeItem(i)" class="buttonDelete">X</button>
+                </li>
+            </ul>       
+
+            <h4>Examine:</h4>
+            <p><input style="background-color: rgb(135, 136, 136)" class="content" type="text" formControlName="examine">
+
+            <div class="buttonContainer">
+                <button (click)="save()"> Save </button>
+
+            </div>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,32 @@
+<div class="designContainer">
+
+    <div class="navBar">
+
+        <ul>
+            <li>
+                <a [routerLink]="['design/monster/create']">MONSTRUO</a>
+            </li>
+
+            <li>
+                <a [routerLink]="['/design/item']">ITEM</a>
+            </li>
+
+            <li>
+                <a [routerLink]="['/design/room']">HABITACION</a>
+            </li>
+        </ul>
+
+    </div>
+
+
+    <div class="container">
+
+        <div class="designDisplay">
+            <router-outlet></router-outlet>
+        </div>
+
+    </div>
+
+
+
+</div>

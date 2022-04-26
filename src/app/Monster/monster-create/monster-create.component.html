@@ -1,0 +1,65 @@
+<div class="showSection">
+
+    <form [formGroup]="monsterCreateForm">
+        <h3>CREAR NUEVO MONSTRUO</h3>
+        <h3>------------------------------------------</h3>
+
+
+        <div class="statSection">
+            
+            <ul>
+                <li>
+                    <p class="tittle">NOMBRE</p>
+                    <p><input class="tittleInput" type="text" formControlName="name"></p>
+                </li>
+                <li>
+                    <p class="tittle">ULTIMA ACTUALIZACION</p>
+                    <p><input class="content" type="text" formControlName="last_updated"  ></p>
+                </li>
+                <li>
+                    <p class="tittle">NIVEL DE ATAQUE</p>
+                    <p><input class="content" type="number" formControlName="attack_level"></p>
+
+                </li>
+                <li>
+                    <p class="tittle">DEFENSA</p>
+                    <p><input class="content" type="number" formControlName="defence_slash" ></p>
+                </li>
+                <li>
+                    <p class="tittle">TAMAÑO</p>
+                    <p><input class="content" type="number" formControlName="size" ></p>
+                </li>
+                <li>
+                    <p class="tittle">HITPOINTS</p>
+                    <p><input class="content" type="number" formControlName="hitpoints" ></p>
+                </li>
+
+            </ul>
+            <h3>------------------------------------------</h3>
+            <h3>CATEGORIAS
+                <button (click)="addCategory()" style="width: 10%;" >NUEVA </button>
+            </h3>
+
+            <ul formArrayName="categories">
+                <li *ngFor="let category of categories.controls; let i = index">
+                    <p [formGroupName]="i">
+                        <input class="content" type="text" formControlName="name"> 
+                    </p>
+                    <button (click)="removeCategory(i)" class="buttonDelete">BORRAR</button>
+                </li>
+            </ul>
+            <h3>------------------------------------------</h3>
+            <h4>DESCRIPCION:</h4>
+            <p><input style="background-color: rgb(135, 136, 136)" class="content" type="text" formControlName="examine">
+                <h3>------------------------------------------</h3>
+            <p>URL: <a [href]= "monster.wiki_url" >{{monster?.wiki_url}}</a></p>
+            
+        
+            <div class="buttonContainer">
+                <button (click)="save()"> GUARDAR </button>
+               
+            </div>
+        </div>
+
+    </form> 
+</div>
