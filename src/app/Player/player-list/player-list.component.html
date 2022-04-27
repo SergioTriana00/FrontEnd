@@ -1,8 +1,11 @@
-<h3> PLAYER LIST <button (click)="ngOnInit()" >R</button> </h3>
+<div class="cont" >
+    <h3> LISTA DE JUGADORES <button (click)="ngOnInit()">ACTUALIZAR</button> </h3>
 
-<ul>
-    <li *ngFor="let player of players; let i = index">
-        <a [routerLink]="['/admin/show',player.id]">{{player.name}}</a>
-        <button (click)="delete(player.id)"> X </button>
-    </li>
-</ul>
+    <ul>
+        <li *ngFor="let player of players; let i = index">
+            <a [routerLink]="['/admin/show',player.id]">{{player.name}}</a>
+            <button (click)="delete(player.id)"> ELIMINAR </button>
+            <button *ngIf="design == false" (click)="add(player)"> AGREGAR </button>
+        </li>
+    </ul>
+</div>

@@ -1,1 +1,11 @@
-<p>room-list works!</p>
+<h3> ROOM LIST <button (click)="ngOnInit()">R</button> </h3>
+
+<ul>
+
+    <li *ngFor="let room of rooms; let i = index">
+        <a [routerLink]="['/design/room/show',room.id]">{{room.name}}</a>
+        <button (click)="delete(room.id)"> - </button>
+        <button (click)="add(room)"> + </button>
+    </li>
+
+</ul>

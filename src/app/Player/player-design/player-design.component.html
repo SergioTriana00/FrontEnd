@@ -1,7 +1,13 @@
 <div class="playerSection">
 
     <div class="column">
-        <app-item-list></app-item-list>
+        <div style="border-left: 0px solid black;" class="container">
+            <app-item-list></app-item-list>
+        </div>
+
+        <div style="border-left: 0px solid black;" class="container">
+            <app-room-list></app-room-list>
+        </div>
     </div>
 
     <div class="selectedDisplay">
@@ -14,7 +20,7 @@
 
             </div>
             
-            <button [routerLink]="['/admin/create']"> Create </button>           
+            <button [routerLink]="['/admin/create']"> CREAR </button>           
         </div>
 
     </div>

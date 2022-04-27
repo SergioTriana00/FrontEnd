@@ -2,7 +2,7 @@
 
     <form [formGroup]="itemCreateForm">
 
-        <h3>CREATE MENU</h3>    
+        <h3>FORMULARIO DE CREACION ITEM</h3>    
         <h3><input class="tittleInput" type="text" formControlName="name"></h3>
 
         <div class="imageContainer">
@@ -11,7 +11,7 @@
             </div>
 
             <div class="examine">
-                Examine: <input style="border: 3px solid black;" class="content" type="text" formControlName="examine">
+                DESCRIPCION: <input style="border: 3px solid black;" class="content" type="text" formControlName="examine">
             </div>
 
         </div>
@@ -20,25 +20,25 @@
         <ul>
 
             <li>
-                <p class="tittle"> Last updated </p>
+                <p class="tittle"> ACTUALIZACION </p>
                 <p><input class="content" type="text" formControlName="last_updated"></p>
             </li>
             <li>
-                <p class="tittle">Cost</p>
+                <p class="tittle">COSTO</p>
                 <p><input class="content" type="number" formControlName="cost"></p>
             </li>
             <li>
-                <p class="tittle">Weigth</p>
+                <p class="tittle">PESO</p>
                 <p><input class="content" type="number" formControlName="weight"></p>
             </li>
             <li>
-                <p class="tittle">wiki Url</p>
+                <p class="tittle">WIKI</p>
                 <p> <input class="content" type="text" formControlName="wiki_url"></p>
             </li>
 
 
             <div class="buttonContainer">
-                <button (click)="save()"> Save </button>
+                <button (click)="save()"> GUARDAR </button>
             </div>
             
         </ul>

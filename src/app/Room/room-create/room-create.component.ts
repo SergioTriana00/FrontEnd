@@ -1,4 +1,3 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,23 +13,21 @@ import { PlayerService } from 'src/app/Shared/player.service';
 import { RoomService } from 'src/app/Shared/room.service';
 
 @Component({
-  selector: 'app-room-show',
-  templateUrl: './room-show.component.html',
-  styleUrls: ['./room-show.component.css']
+  selector: 'app-room-create',
+  templateUrl: './room-create.component.html',
+  styleUrls: ['./room-create.component.css']
 })
-export class RoomShowComponent implements OnInit {
+export class RoomCreateComponent implements OnInit {
 
-  room: Room = new Room(0, "")
+  room: Room = new Room(-1, "")
   monster: Monster = new Monster(0,"-- NONE --","",0,0,0,0,"","")
-
 
   roomCreateForm: FormGroup = new FormGroup({
     title: new FormControl(''),
     description: new FormControl('')
   });
 
-  constructor(
-    private fb: FormBuilder,
+  constructor(private fb: FormBuilder,
     private roomService: RoomService,
     private playerService: PlayerService,
     private monsterService: MonsterService,
@@ -40,16 +37,6 @@ export class RoomShowComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-
-    this.route.paramMap.subscribe((params) => {
-
-      let id = +params.get("id")!;
-      this.roomService.findById(id).subscribe((received) => {
-        this.room = received;
-        this.loadFormData()
-      });
-
-    });
 
     this.roomCreateForm = this.fb.group({
       name: ['', [Validators.required]],
@@ -82,6 +69,7 @@ export class RoomShowComponent implements OnInit {
 
   }
 
+
   loadFormData() {
 
     this.roomCreateForm.patchValue({
@@ -104,12 +92,7 @@ export class RoomShowComponent implements OnInit {
       this.decoItems.push(this.newDecoItem(decoItem))
     });
 
-
-
-
   }
-
-  /// ----------- ITEMS ---------- ///
 
   get items(): FormArray {
     return this.roomCreateForm.get('items') as FormArray
@@ -118,7 +101,6 @@ export class RoomShowComponent implements OnInit {
   removeItem(i: number) {
     this.items.removeAt(i)
   }
-
 
   addItem(newItem: Item) {
 
@@ -143,7 +125,6 @@ export class RoomShowComponent implements OnInit {
   }
 
   /// ----------- Players ---------- ///
-
   get players(): FormArray {
     return this.roomCreateForm.get('players') as FormArray
   }

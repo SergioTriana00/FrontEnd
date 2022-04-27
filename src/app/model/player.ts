@@ -1,4 +1,5 @@
 import { Item } from "./item";
+import { Room } from "./room";
 
 export class Player {
 
@@ -18,6 +19,7 @@ export class Player {
 
     ){}
 
+    public location: Room | undefined;
     public category: string[] = [];
     public backpack: Item[] = [];
 

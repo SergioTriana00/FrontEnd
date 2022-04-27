@@ -6,10 +6,10 @@ export class Room {
 
   constructor(
     public id: number,
-    public name: string,
-    public monster: Monster,
+    public name: string
   ){}
 
+  public monster: Monster | undefined;
   public decorativeItems: DecorativeItem[] = [];
   public items: Item[] = [];
   public players: Player[] = [];

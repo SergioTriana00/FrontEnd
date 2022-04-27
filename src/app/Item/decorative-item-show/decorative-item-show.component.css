@@ -1,0 +1,33 @@
+.container{
+    position: relative;
+    list-style: none;
+    align-items: left;
+    width: auto;
+}
+.buttonGroup ul{
+    height: auto;   
+    list-style: none;
+    
+}
+.buttonGroup ul li{
+    margin: 10px;    
+    list-style: none;
+    
+}
+
+button{
+    background-color:#48edff;
+    height: auto;
+} 
+div{
+    background:#48edff;
+    width: 400px;
+    height: auto;
+    padding: 10px;
+}
+
+.color1 {color: #ffd551;}
+.color2 {color: #fff374;}
+.color3 {color: #082fca;}
+.color4 {color: #0784ff;}
+.color5 {color: #48edff;}

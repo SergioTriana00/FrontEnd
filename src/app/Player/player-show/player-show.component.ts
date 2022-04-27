@@ -1,9 +1,11 @@
+import { RoomService } from 'src/app/Shared/room.service';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { filter, switchMap } from 'rxjs';
 import { Item } from 'src/app/model/item';
 import { Player } from 'src/app/model/player';
+import { Room } from 'src/app/model/room';
 import { ItemService } from 'src/app/Shared/item.service';
 import { PlayerService } from 'src/app/Shared/player.service';
 
@@ -17,6 +19,8 @@ export class PlayerShowComponent implements OnInit {
   player: Player = new Player(0, "", "", 0, 0, 0, 0, "", "", 0, 0);
   playerToSend: Player = new Player(0, "", "", 0, 0, 0, 0, "", "", 0, 0);
 
+  room: Room = new Room(0,"-- NONE --");
+
   playerCreateForm: FormGroup = new FormGroup({
     title: new FormControl(''),
     description: new FormControl('')
@@ -26,7 +30,8 @@ export class PlayerShowComponent implements OnInit {
     private playerService: PlayerService,
     private itemService: ItemService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private roomService: RoomService) { }
 
   ngOnInit(): void {
 
@@ -35,6 +40,8 @@ export class PlayerShowComponent implements OnInit {
       let id = +params.get("id")!;
       this.playerService.findById(id).subscribe((received) => {
         this.player = received;
+
+        console.log(received)
         this.loadFormData()
       });
 
@@ -50,6 +57,7 @@ export class PlayerShowComponent implements OnInit {
       examine: ['', [Validators.required]],
       wiki_url: ['', [Validators.required]],
       categories: this.fb.array([]),
+      location: [this.room,[Validators.required]],
       maxWeight: ['', [Validators.required]],
       weight: ['', [Validators.required]],
       backpack: this.fb.array([])
@@ -58,6 +66,13 @@ export class PlayerShowComponent implements OnInit {
     this.itemService.itemSelected.subscribe(item => {
       this.addItem(item)
     })
+
+    this.roomService.roomSelected.subscribe((received)=>{
+
+      console.log(received)
+      this.room = received
+    })
+
 
   }
 
@@ -74,7 +89,7 @@ export class PlayerShowComponent implements OnInit {
       examine: this.player.examine,
       wiki_url: this.player.wiki_url,
       maxWeight: this.player.maxWeight,
-      weight: this.player.weight
+      weight: this.player.weight,
 
     });
 
@@ -87,6 +102,8 @@ export class PlayerShowComponent implements OnInit {
     this.player.backpack.forEach(item => {
       this.items.push(this.newItem(item))
     });
+
+
 
   }
 
@@ -121,7 +138,6 @@ export class PlayerShowComponent implements OnInit {
 
   addItem(newItem: Item) {
 
-    
     // ------- add Item logic not repeatable ------ ///
     let valid = true;
 
@@ -161,6 +177,7 @@ export class PlayerShowComponent implements OnInit {
     this.playerToSend.wiki_url = this.playerCreateForm.value.wiki_url;
     this.playerToSend.maxWeight = this.playerCreateForm.value.maxWeight;
     this.playerToSend.weight = this.playerCreateForm.value.weight;
+    this.playerToSend.location = this.room;
 
     this.categories.value.forEach((category: { name: string; }) => {
 

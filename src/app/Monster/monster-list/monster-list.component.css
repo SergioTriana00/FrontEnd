@@ -3,6 +3,11 @@ div{
     position: relative;
     left: 0;
     top: -750px;
+    align-items: left;
+    background:#0784ff ;
+    width: 500px;
+    padding: 10px;
+    height: auto;
 }
 
 div h3{

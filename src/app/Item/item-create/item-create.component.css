@@ -1,0 +1,8 @@
+.showSection{
+    position: relative;
+    left: 550px;
+    align-items: left;
+    background:#48edff ;
+    width: 500px;
+    padding: 10px;
+}

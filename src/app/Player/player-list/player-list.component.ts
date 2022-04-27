@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Player } from 'src/app/model/player';
 import { PlayerService } from 'src/app/Shared/player.service';
 
@@ -10,10 +11,18 @@ import { PlayerService } from 'src/app/Shared/player.service';
 export class PlayerListComponent implements OnInit {
 
   players: Player[] = [];
-  
-  constructor(private playerService: PlayerService) { }
+  design: boolean = false;
+
+  constructor(private playerService: PlayerService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
+
+    if(this.router.url == '/admin'){
+
+      this.design = true;
+    }
 
     this.loadPlayers()
   }
@@ -26,4 +35,9 @@ export class PlayerListComponent implements OnInit {
     this.playerService.findAll().subscribe((received)=> {this.players = received});
   }
 
+  add(player:Player){
+
+    this.playerService.sendPlayer(player)
+
+  }
 }

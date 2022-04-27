@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DecorativeItem } from 'src/app/model/decorative-item';
 import { DecorativeItemService } from 'src/app/Shared/decorative-item.service';
 
@@ -9,6 +10,8 @@ import { DecorativeItemService } from 'src/app/Shared/decorative-item.service';
   styleUrls: ['./decorative-item-show.component.css']
 })
 export class DecorativeItemShowComponent implements OnInit {
+  
+  
 
   decoItemsForm: FormGroup = new FormGroup({
     title: new FormControl(''),
@@ -16,17 +19,26 @@ export class DecorativeItemShowComponent implements OnInit {
   });
 
   decorativeItems: DecorativeItem[] = []
+  design: boolean = false;
+
   constructor(
     private fb: FormBuilder,
-    private decoItemService: DecorativeItemService
+    private decoItemService: DecorativeItemService,
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-  
+    
+    if(this.router.url.match('/design/item')){
+      this.design = true;
+    }
+
     this.decoItemsForm = this.fb.group({
       names: this.fb.array([])
     })
     this.loadItems()
+    
   }
 
   get names(): FormArray {
@@ -71,4 +83,10 @@ export class DecorativeItemShowComponent implements OnInit {
     this.decoItemService.save(decoItem).subscribe(a=> this.loadItems())
   }
 
+  add(index: number){
+
+    console.log(index)
+    this.decoItemService.sendItem(this.names.at(index).value)
+
+  }
 }

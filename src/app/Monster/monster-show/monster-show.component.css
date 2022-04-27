@@ -2,8 +2,15 @@
     position: relative;
     left: 550px;
     align-items: left;
+    background:#48edff ;
+    width: 500px;
+    padding: 10px;
 }
-
+.color1 {color: #ffd551;}
+.color2 {color: #fff374;}
+.color3 {color: #082fca;}
+.color4 {color: #0784ff;}
+.color5 {color: #48edff;}
 .statSection ul li{
     list-style: none;
 }

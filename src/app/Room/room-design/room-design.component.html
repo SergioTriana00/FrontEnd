@@ -1,1 +1,28 @@
-<p>room-design works!</p>
+<div class="roomSection">
+
+
+    <div class="selectedDisplay">
+
+        <div class="container">
+
+            <div class="infoDisplay">
+
+                <router-outlet></router-outlet>
+
+            </div>
+
+            <button [routerLink]="['/design/room/create']"> Create </button>
+        </div>
+
+    </div>
+
+    <div class="listDisplay">
+
+        <div class="container">
+            <app-room-list></app-room-list>
+        </div>
+
+    </div>
+
+
+</div>

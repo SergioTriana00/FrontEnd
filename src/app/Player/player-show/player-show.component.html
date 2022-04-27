@@ -7,40 +7,44 @@
         <div class="statSection">
             <ul>
                 <li>
-                    <p class="tittle">last updated</p>
+                    <p class="tittle">ACTUALIZACION</p>
                     <p><input class="content" type="text" formControlName="last_updated"  ></p>
                 </li>
                 <li>
-                    <p class="tittle">Attack Level</p>
+                    <p class="tittle">ATAQUE</p>
                     <p><input class="content" type="number" formControlName="attack_level"></p>
 
                 </li>
                 <li>
-                    <p class="tittle">defence slash</p>
+                    <p class="tittle">DEFENCE</p>
                     <p><input class="content" type="number" formControlName="defence_slash" ></p>
                 </li>
                 <li>
-                    <p class="tittle">size</p>
+                    <p class="tittle">TAMAÑO</p>
                     <p><input class="content" type="number" formControlName="size" ></p>
                 </li>
                 <li>
-                    <p class="tittle">hitpoints</p>
+                    <p class="tittle">HITPOINTS</p>
                     <p><input class="content" type="number" formControlName="hitpoints" ></p>
                 </li>
 
                 <li>
-                    <p class="tittle">MaxWeight</p>
+                    <p class="tittle">PESO MAXIMO</p>
                     <p><input class="content" type="number" formControlName="maxWeight" ></p>
                 </li>
 
                 <li>
-                    <p class="tittle">Weight</p>
+                    <p class="tittle">PESO</p>
                     <p><input class="content" type="number" formControlName="weight" ></p>
+                </li>
+                <li>
+                    <p class="tittle"> HABITACION</p>
+                    <p>{{this.room.name}}</p>
                 </li>
 
             </ul>
 
-            <h3 style="border-top: 4px solid black;">categories
+            <h3 style="border-top: 4px solid black;">CATEGORIAS
                 <button (click)="addCategory()" style="width: 10%;" >New </button>
             </h3>
 
@@ -53,7 +57,7 @@
                 </li>
             </ul>
 
-            <h3 style="border-top: 4px solid black;">Backpack
+            <h3 style="border-top: 4px solid black;">MOCHILA
                 <!-- <button (click)="addCategory()" style="width: 10%;" >New </button> -->
             </h3>
 
@@ -66,11 +70,11 @@
                 </li>
             </ul>       
 
-            <h4>Examine:</h4>
+            <h4>DESCRIPCION:</h4>
             <p><input style="background-color: rgb(135, 136, 136)" class="content" type="text" formControlName="examine">
 
             <div class="buttonContainer">
-                <button (click)="save()"> Save </button>
+                <button (click)="save()"> GUARDAR </button>
 
             </div>
         </div>

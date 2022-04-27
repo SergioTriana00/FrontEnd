@@ -1,0 +1,42 @@
+.cont{
+    position: relative;
+    left: 1100px;
+    top: -1300px;
+    align-items: left;
+    background:#48edff ;
+    width: 500px;
+    height: auto;
+    padding: 10px;
+}
+
+div ul li{
+    background-color:#0784ff;
+    text-align: left;
+    height: 25px;
+    width: 250px;
+    margin: 5px;
+    list-style: none;
+    text-emphasis: none;
+    margin-left: 30px;
+    
+} 
+div ul li:hover{
+    background-color:#ffd551;
+    text-align: left;
+    height: 25px;
+    
+    margin: 5px;
+    list-style: none;
+    text-emphasis: none;
+    margin-left: 30px;
+    
+} 
+div ul button{
+    background-color:#48edff;
+    height: 25px;
+    position: relative;
+    right: -25px;
+    border-bottom: #48edff;
+    
+    
+} 

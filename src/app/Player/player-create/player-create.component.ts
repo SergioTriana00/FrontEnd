@@ -3,8 +3,10 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { ActivatedRoute, Router } from '@angular/router';
 import { Item } from 'src/app/model/item';
 import { Player } from 'src/app/model/player';
+import { Room } from 'src/app/model/room';
 import { ItemService } from 'src/app/Shared/item.service';
 import { PlayerService } from 'src/app/Shared/player.service';
+import { RoomService } from 'src/app/Shared/room.service';
 
 @Component({
   selector: 'app-player-create',
@@ -16,6 +18,8 @@ export class PlayerCreateComponent implements OnInit {
   player: Player = new Player(0, "", "", 0, 0, 0, 0, "", "", 0, 0);
   playerToSend: Player = new Player(0, "", "", 0, 0, 0, 0, "", "", 0, 0);
 
+  room: Room = new Room(0,"-- NONE --");
+
   playerCreateForm: FormGroup = new FormGroup({
     title: new FormControl(''),
     description: new FormControl('')
@@ -25,7 +29,8 @@ export class PlayerCreateComponent implements OnInit {
     private playerService: PlayerService,
     private itemService: ItemService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private roomService: RoomService) { }
 
   ngOnInit(): void {
 
@@ -44,8 +49,17 @@ export class PlayerCreateComponent implements OnInit {
       backpack: this.fb.array([])
     });
 
+
+    this.items.clear()
+
     this.itemService.itemSelected.subscribe(item => {
       this.addItem(item)
+    })
+
+    this.roomService.roomSelected.subscribe((received)=>{
+
+      console.log(received)
+      this.room = received
     })
 
   }
@@ -98,7 +112,6 @@ export class PlayerCreateComponent implements OnInit {
     })
   }
 
-
   /// ----------- ITEMS ---------- ///
   get items(): FormArray {
     return this.playerCreateForm.get('backpack') as FormArray
@@ -110,7 +123,7 @@ export class PlayerCreateComponent implements OnInit {
 
   addItem(newItem: Item) {
 
-    
+
     // ------- add Item logic not repeatable ------ ///
     let valid = true;
 
@@ -127,7 +140,6 @@ export class PlayerCreateComponent implements OnInit {
     }
 
   }
-
 
   newItem(newItem: Item): FormGroup {
     return this.fb.group({
@@ -151,6 +163,7 @@ export class PlayerCreateComponent implements OnInit {
     this.playerToSend.wiki_url = this.playerCreateForm.value.wiki_url;
     this.playerToSend.maxWeight = this.playerCreateForm.value.maxWeight;
     this.playerToSend.weight = this.playerCreateForm.value.weight;
+    this.playerToSend.location = this.room;
 
     this.categories.value.forEach((category: { name: string; }) => {
 
@@ -164,9 +177,11 @@ export class PlayerCreateComponent implements OnInit {
 
     })
 
-    this.playerService.save(this.playerToSend).subscribe(a => {
-      console.log(a)
-    })
+    console.log(this.playerToSend)
+    // this.playerService.save(this.playerToSend).subscribe(a => {
+    //   console.log(a)
+    // })
+    this.ngOnInit()
 
   }
 
