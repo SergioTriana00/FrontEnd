@@ -21,25 +21,25 @@ export class RoomService {
   findAll(): Observable<Room[]>{
 
     console.log("called FindAll service")
-    return this.http.get<Room[]>("http://localhost:8080/room/list");
+    return this.http.get<Room[]>("http://localhost:8080/habitacion/list");
 
   }
 
   findById(id: number):Observable<Room>{
 
-    return this.http.get<Room>("http://localhost:8080/room/"+id+"/get");
+    return this.http.get<Room>("http://localhost:8080/habitacion/"+id+"/get");
 
   }
 
   delete(id: number): Observable<number> {
 
-    return this.http.get<number>("http://localhost:8080/room/"+id+"/delete")
+    return this.http.get<number>("http://localhost:8080/habitacion/"+id+"/delete")
 
   }
 
   save(room: Room): Observable<Room>{
 
-    return this.http.post<Room>("http://localhost:8080/room/save",room);
+    return this.http.post<Room>("http://localhost:8080/habitacion/save",room);
 
   }
 }

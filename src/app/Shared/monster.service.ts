@@ -19,25 +19,25 @@ export class MonsterService {
 
   findAll(): Observable<Monster[]>{
     
-    return this.http.get<Monster[]>("http://localhost:8080/monster/list");
+    return this.http.get<Monster[]>("http://localhost:8080/monstruo/list");
 
   }
 
   findById(id: number):Observable<Monster>{
 
-    return this.http.get<Monster>("http://localhost:8080/monster/"+id+"/get");
+    return this.http.get<Monster>("http://localhost:8080/monstruo/"+id+"/get");
 
   }
 
   delete(id: number): Observable<number> {
 
-    return this.http.get<number>("http://localhost:8080/monster/"+id+"/delete")
+    return this.http.get<number>("http://localhost:8080/monstruo/"+id+"/delete")
 
   }
 
   save(monster: Monster): Observable<Monster>{
 
-    return this.http.post<Monster>("http://localhost:8080/monster/save",monster);
+    return this.http.post<Monster>("http://localhost:8080/monstruo/save",monster);
 
   }
  

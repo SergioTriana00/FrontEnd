@@ -19,25 +19,25 @@ export class PlayerService {
 
   findAll(): Observable<Player[]>{
     
-    return this.http.get<Player[]>("http://localhost:8080/player/list");
+    return this.http.get<Player[]>("http://localhost:8080/jugador/list");
 
   }
 
   findById(id: number):Observable<Player>{
 
-    return this.http.get<Player>("http://localhost:8080/player/"+id+"/get");
+    return this.http.get<Player>("http://localhost:8080/jugador/"+id+"/get");
 
   }
 
   delete(id: number): Observable<number> {
 
-    return this.http.get<number>("http://localhost:8080/player/"+id+"/delete")
+    return this.http.get<number>("http://localhost:8080/jugador/"+id+"/delete")
 
   }
 
   save(monster: Player): Observable<Player>{
 
-    return this.http.post<Player>("http://localhost:8080/player/save",monster);
+    return this.http.post<Player>("http://localhost:8080/jugador/save",monster);
 
   }
 }

@@ -9,11 +9,25 @@
         padding: 10px;
     
 }
+.mons{
+    position: relative;
+    top: 750px;
+    left: -10px;
+}
+.iten{
+    position: relative;
+    top: 750px;
+}
+.iten2{
+    position: relative;
+    top: -250px;
+    left: 0px;
+}
 .cont{
     
     position: relative;
     left: 600px;
-    top: -600px;
+    top: -300px;
     align-items: left;
     background:#48edff ;
     width: 500px;
