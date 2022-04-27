@@ -1,0 +1,10 @@
+.cont{
+    position: relative;
+    left: 400px;
+    top: -100px;
+    align-items: left;
+    background:#48edff ;
+    width: 500px;
+    height: auto;
+    padding: 10px;
+}

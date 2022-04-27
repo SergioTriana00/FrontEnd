@@ -1,9 +1,9 @@
-<div>
+<div class="GG">
 
-    <h3>CREATE ROOM </h3>
+    <h3>CREAAR HABITACION </h3>
 
     <div class="lists">
-        <h3> <span>Adition Menu</span> </h3>
+        <h3> <span>MENU DE ADICION</span> </h3>
 
         <div class="listSelect">
             <div class="listSelectItem">
@@ -25,7 +25,8 @@
             </div>
         </div>
     </div>
-
+</div>
+<div class = "cont">
     <form [formGroup]="roomCreateForm">
 
         <h3><input class="tittleInput" type="text" formControlName="name"></h3>
@@ -63,7 +64,8 @@
                 <div class="monster">
                     <p>Monster</p>
                     <span>{{this.roomCreateForm.value.monster?.name}}</span>
-                    <button *ngIf="this.roomCreateForm.value.monster != undefined" (click)="removeMonster()" class="buttonDelete">X</button>
+                    <button *ngIf="this.roomCreateForm.value.monster != undefined" (click)="removeMonster()"
+                        class="buttonDelete">X</button>
                 </div>
             </div>
         </div>
@@ -73,6 +75,4 @@
         </div>
 
     </form>
-
-
 </div>

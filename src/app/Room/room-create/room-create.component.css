@@ -1,0 +1,23 @@
+.GG{
+    
+        position: relative;
+        
+        align-items: left;
+        background:#48edff ;
+        width: 500px;
+        height: auto;
+        padding: 10px;
+    
+}
+.cont{
+    
+    position: relative;
+    left: 600px;
+    top: -600px;
+    align-items: left;
+    background:#48edff ;
+    width: 500px;
+    height: auto;
+    padding: 10px;
+
+}

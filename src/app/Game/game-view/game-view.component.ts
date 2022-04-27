@@ -8,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class GameViewComponent implements OnInit {
 
   constructor() { }
-
+  msg:String[] = []
   ngOnInit(): void {
+
+    this.msg = ["Ha matado un mounstruo", "Ha Recogido un item: SWORD", "Ha Atacado: Daño = 54"];
   }
 
+
+  
 }
