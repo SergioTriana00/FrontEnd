@@ -18,7 +18,7 @@ export class PlayerCreateComponent implements OnInit {
   player: Player = new Player(0, "", "", 0, 0, 0, 0, "", "", 0, 0);
   playerToSend: Player = new Player(0, "", "", 0, 0, 0, 0, "", "", 0, 0);
 
-  room: Room = new Room(0,"-- NONE --");
+  room: Room = new Room(0,"");
 
   playerCreateForm: FormGroup = new FormGroup({
     title: new FormControl(''),
@@ -44,6 +44,7 @@ export class PlayerCreateComponent implements OnInit {
       examine: ['', [Validators.required]],
       wiki_url: ['', [Validators.required]],
       categories: this.fb.array([]),
+      location: [this.player.location,[Validators.required]],
       maxWeight: ['', [Validators.required]],
       weight: ['', [Validators.required]],
       backpack: this.fb.array([])
@@ -59,7 +60,8 @@ export class PlayerCreateComponent implements OnInit {
     this.roomService.roomSelected.subscribe((received)=>{
 
       console.log(received)
-      this.room = received
+      this.room = received;
+      this.player.location= received
     })
 
   }
@@ -77,7 +79,8 @@ export class PlayerCreateComponent implements OnInit {
       examine: this.player.examine,
       wiki_url: this.player.wiki_url,
       maxWeight: this.player.maxWeight,
-      weight: this.player.weight
+      weight: this.player.weight,
+      location: this.player.location
 
     });
 
@@ -163,7 +166,7 @@ export class PlayerCreateComponent implements OnInit {
     this.playerToSend.wiki_url = this.playerCreateForm.value.wiki_url;
     this.playerToSend.maxWeight = this.playerCreateForm.value.maxWeight;
     this.playerToSend.weight = this.playerCreateForm.value.weight;
-    this.playerToSend.location = this.room;
+    this.playerToSend.location = this.player.location;
 
     this.categories.value.forEach((category: { name: string; }) => {
 
@@ -177,12 +180,14 @@ export class PlayerCreateComponent implements OnInit {
 
     })
 
-    console.log(this.playerToSend)
-    // this.playerService.save(this.playerToSend).subscribe(a => {
-    //   console.log(a)
-    // })
-    this.ngOnInit()
+    console.log(this.playerToSend);
+
+    this.playerService.save(this.playerToSend).subscribe(playerSaved => {
+      console.log(playerSaved);
+      this.playerService.updateList();
+    })
 
   }
+  
 
 }

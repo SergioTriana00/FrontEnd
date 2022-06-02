@@ -1,8 +1,192 @@
 
-<div class = "cont">
-    <ul>
-        <li *ngFor="let String of msg; let i = index">
-            <a>{{String}}</a>
-        </li>
-    </ul>
+<div class="gameViewSection">
+
+    <div class="view">
+
+        <div class="roomSection">
+
+            <div class="roomElements">
+
+                <div class="elementDisplay">
+
+                    <h3>Room Items </h3>
+
+                    <ul>
+                        <li *ngFor="let item of room.items; let i = index">
+
+                            <span class="textSpan">
+                                <a>{{item.name}} - {{item.weight}}</a>
+                            </span>
+
+                            <span class="buttonSpan" *ngIf="addItemAvaliable == true">
+                                <button (click)="collectItem(item)"> add</button>
+                            </span>
+
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="elementDisplay">
+
+                    <h3>Room Exits </h3>
+
+                    <ul>
+                        <li *ngFor="let room of room.exits; let i = index">
+                            <span class="textSpan">
+                                <a>{{room.name}}</a>
+                            </span>
+                            <span class="buttonSpan">
+                                <button (click)="changeRoom(room)"> move</button>
+                            </span>
+
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="elementDisplay">
+
+                    <h3>Room Decoratives </h3>
+
+                    <ul>
+                        <li *ngFor="let decorative of room.decorativeItems; let i = index">
+                            <span class="textSpan">
+                                <a>{{decorative.name}}</a>
+                            </span>
+
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="listPlayersSection">
+
+                <div>
+                    <div *ngFor="let player of room.players; let i = index" class="playerHolder">
+                        <div>
+                            <div>
+                                name: {{player.name}}
+                            </div>
+                            <div>
+                                Hp: {{player.hitpoints}}
+                            </div>
+                            <div>
+                                W: {{player.weight}}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="eventLog">
+
+                <div class="logConsole">
+
+                    <div class="logging">
+                        <div #logContainer class="logContainer">
+
+                        </div>
+                    </div>
+
+                    <div class="optionsBar">
+                        <button *ngIf="attackAvaliable == true" (click)="attackMonster()"> Fight</button>
+                    </div>
+
+                </div>
+
+                <div class="playerBackpack">
+
+                    <div class="containerTop">
+
+                        <h3>Player Backpack </h3>
+
+                        <ul>
+                            <li *ngFor="let item of player.backpack; let i = index">
+
+                                <span class="textSpan">
+                                    <a>{{item.name}}</a>
+                                </span>
+
+                                <span class="buttonSpan">
+                                    <button (click)="dropItem(item)"> drop</button>
+                                </span>
+
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <div class="containerBottom">
+                        <span class="tittleSpan"> Weight: </span>
+                        <span class="textSpan">{{player.weight}}</span>
+                        <span class="tittleSpan"> Max: </span>
+                        <span class="textSpan">{{player.maxWeight}}</span>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="playerSection">
+
+            <div style="border-bottom: 1px solid black;" class="entityDisplay">
+                <h4>{{this.player.name}}</h4>
+
+                <div class="statContainer">
+                    <span class="tittleSpan">Attack: </span>
+                    <span class="textSpan">{{this.player.attack_level}}</span>
+                </div>
+
+                <div class="statContainer">
+                    <span class="tittleSpan">Defence: </span>
+                    <span class="textSpan">{{this.player.defence_slash}}</span>
+                </div>
+
+                <div class="statContainer">
+                    <span class="tittleSpan">Size: </span>
+                    <span class="textSpan">{{this.player.size}}</span>
+                </div>
+
+                <div class="imgContainer">
+                </div>
+
+                <progress id="file" max="{{this.player.hitpoints}}" value="{{this.playerHitpoints}}"></progress>
+
+            </div>
+
+            <div class="entityDisplay">
+                <h4>{{this.room.monster?.name}}</h4>
+
+                <div class="statContainer">
+                    <span class="tittleSpan">Attack: </span>
+                    <span class="textSpan">{{this.room.monster?.attack_level}}</span>
+                </div>
+
+                <div class="statContainer">
+                    <span class="tittleSpan">Defence: </span>
+                    <span class="textSpan">{{this.room.monster?.defence_slash}}</span>
+                </div>
+
+                <div class="statContainer">
+                    <span class="tittleSpan">Size: </span>
+                    <span class="textSpan">{{this.room.monster?.size}}</span>
+                </div>
+
+                <div class="imgContainer">
+                </div>
+
+                <progress id="" max="{{this.room.monster?.hitpoints}}" value="{{this.monsterHitpoints}}"></progress>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>

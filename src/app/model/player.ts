@@ -19,7 +19,7 @@ export class Player {
 
     ){}
 
-    public location: Room | undefined;
+    public location: Room = new Room(0,"");
     public category: string[] = [];
     public backpack: Item[] = [];
 

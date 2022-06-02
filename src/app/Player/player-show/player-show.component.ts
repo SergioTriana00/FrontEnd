@@ -19,7 +19,7 @@ export class PlayerShowComponent implements OnInit {
   player: Player = new Player(0, "", "", 0, 0, 0, 0, "", "", 0, 0);
   playerToSend: Player = new Player(0, "", "", 0, 0, 0, 0, "", "", 0, 0);
 
-  room: Room = new Room(0,"-- NONE --");
+  room: Room = new Room(0,"");
 
   playerCreateForm: FormGroup = new FormGroup({
     title: new FormControl(''),
@@ -36,15 +36,12 @@ export class PlayerShowComponent implements OnInit {
   ngOnInit(): void {
 
     this.route.paramMap.subscribe((params) => {
-
       let id = +params.get("id")!;
       this.playerService.findById(id).subscribe((received) => {
         this.player = received;
-
         console.log(received)
         this.loadFormData()
       });
-
     });
 
     this.playerCreateForm = this.fb.group({
@@ -57,7 +54,7 @@ export class PlayerShowComponent implements OnInit {
       examine: ['', [Validators.required]],
       wiki_url: ['', [Validators.required]],
       categories: this.fb.array([]),
-      location: [this.room,[Validators.required]],
+      location: [this.player.location,[Validators.required]],
       maxWeight: ['', [Validators.required]],
       weight: ['', [Validators.required]],
       backpack: this.fb.array([])
@@ -70,9 +67,9 @@ export class PlayerShowComponent implements OnInit {
     this.roomService.roomSelected.subscribe((received)=>{
 
       console.log(received)
-      this.room = received
+      this.player.location = received
+      
     })
-
 
   }
 
@@ -90,7 +87,7 @@ export class PlayerShowComponent implements OnInit {
       wiki_url: this.player.wiki_url,
       maxWeight: this.player.maxWeight,
       weight: this.player.weight,
-
+      location: this.player.location
     });
 
     this.categories.clear();
@@ -177,7 +174,7 @@ export class PlayerShowComponent implements OnInit {
     this.playerToSend.wiki_url = this.playerCreateForm.value.wiki_url;
     this.playerToSend.maxWeight = this.playerCreateForm.value.maxWeight;
     this.playerToSend.weight = this.playerCreateForm.value.weight;
-    this.playerToSend.location = this.room;
+    this.playerToSend.location = this.player.location;
 
     this.categories.value.forEach((category: { name: string; }) => {
 
@@ -191,8 +188,10 @@ export class PlayerShowComponent implements OnInit {
 
     })
 
-    this.playerService.save(this.playerToSend).subscribe(a => {
-      console.log(a)
+    console.log(this.playerToSend);
+    this.playerService.save(this.playerToSend).subscribe(playerSaved => {
+      console.log(playerSaved);
+      this.playerService.updateList();
     })
 
   }
